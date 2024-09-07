@@ -3,19 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>תצוגת מובייל</title>
+    <title>התאמת עמוד למובייל</title>
     <style>
-        body {
+        html, body {
             font-family: Arial, sans-serif;
             direction: rtl;
             text-align: center;
-            margin: 20px;
+            margin: 0;
+            padding: 0;
             background-color: #f4f4f4;
+            overflow-x: hidden;
         }
 
         .container {
             max-width: 600px;
             margin: auto;
+            overflow-x: hidden;
         }
 
         .tabs {
@@ -84,11 +87,35 @@
             border-radius: 25px;
         }
 
+        .device-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .device-frame {
+            background-color: #000;
+            border-radius: 40px;
+            padding: 10px;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
+        }
+
+        .screen {
+            width: 375px;
+            height: 667px;
+            overflow: hidden;
+            border-radius: 30px;
+            background-color: white;
+        }
+
         iframe {
             width: 100%;
             height: 100%;
             border: none;
             display: block;
+            max-width: 100%;
+            box-sizing: border-box;
         }
 
         input[type="text"] {
@@ -106,10 +133,10 @@
     </style>
 </head>
 <body>
-    <h1>תצוגת מובייל</h1>
+    <h1>התאמת עמוד למובייל</h1>
     <div class="container">
         <input type="text" id="urlInput" placeholder="הזן כתובת אתר">
-        <button onclick="loadPage()">הצג תצוגת מובייל</button>
+        <button onclick="loadPage()">לבדיקת התאמה</button>
 
         <div class="tabs">
             <div class="tab active" onclick="switchTab('android')">אנדרואיד</div>
@@ -123,8 +150,12 @@
         </div>
 
         <div id="iphoneTab" class="tab-content">
-            <div class="phone-frame iphone">
-                <iframe id="testFrameIphone"></iframe>
+            <div class="device-container">
+                <div class="device-frame">
+                    <div class="screen">
+                        <iframe id="testFrameIphone"></iframe>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
